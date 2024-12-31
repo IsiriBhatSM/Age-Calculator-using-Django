@@ -1,0 +1,53 @@
+{% extends 'calculator/base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;" >Test Cases</h1>
+
+<!-- Filter Form -->
+<form id="filter-form" method="get" action="{% url 'calculator:test_cases' %}">
+    <label for="test_case_type">Filter by Test Case Type:</label>
+    <select id="test_case_type" name="test_case_type">
+        <option value="Both" {% if selected_filter == 'Both' %}selected{% endif %}>All</option>
+        <option value="Boundary" {% if selected_filter == 'Boundary' %}selected{% endif %}>Boundary</option>
+        <option value="Nominal" {% if selected_filter == 'Nominal' %}selected{% endif %}>Nominal</option>
+        <option value="Robust" {% if selected_filter == 'Robust' %}selected{% endif %}>Robust</option>
+        <option value="Worst Robust" {% if selected_filter == 'Worst Robust' %}selected{% endif %}>Worst Robust</option>
+    </select>
+</form>
+
+<!-- Display Test Cases -->
+<table border>
+    <thead>
+        <tr>
+            <th>Date of Birth</th>
+            <th>Calculated Age (Years, Months, Days)</th>
+            <th>Test Case Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dob in dobs %}
+            <tr>
+                <td>{{ dob.day }}/{{ dob.month }}/{{ dob.year }}</td>
+                <td>
+                    {% if dob.age_years == -1 %}
+                    Future date
+                {% elif dob.age_years is not None %}
+                    {{ dob.age_years }} years, {{ dob.age_months }} months, {{ dob.age_days }} days
+                {% else %}
+                    Invalid Date
+                {% endif %}
+                </td>
+                <td>{{ dob.test_case_type }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+<script>
+    document.getElementById('test_case_type').addEventListener('change', function() {
+        document.getElementById('filter-form').submit();
+    });
+</script>
+
+{% endblock %}

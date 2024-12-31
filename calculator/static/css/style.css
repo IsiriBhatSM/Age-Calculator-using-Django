@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7c2c2;
+    background-image: url('ac.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    text-align: center;
+}
+
+.main-container {
+    
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-size: cover; /* Adjusts the size of the image */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 70px; /* Adjusted to avoid overlap with fixed header */
+}
+
+header {
+    color: #fff;
+    padding: 20px; /* Reduced padding for a smaller header */
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #333;
+    z-index: 1000; /* Ensures the header is above other elements */
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block; /* Ensures links are side by side */
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #fff; /* Added background color for better visibility */
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+form input[type="submit"]:hover {
+    background: #555;
+}
+
+.errorlist {
+    color: red;
+    background-color: #ffeeee;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #333;
+    color: #fff;
+}

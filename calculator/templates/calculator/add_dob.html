@@ -1,0 +1,35 @@
+{% extends 'calculator/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Add Date of Birth</h1>
+    <form method="post" action="{% url 'calculator:add_dob' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calculate Age</button>
+    </form>
+
+    <div class="result" style="background-color:white">
+        {% if form.errors %}
+            <div class="errorlist">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% elif future_date %}
+            <div class="errorlist">
+                <p>The date is in the future. Please enter a valid past date.</p>
+            </div> 
+        {% elif date_is_invalid %}
+            <div class="errorlist">
+                <p>Date is invalid. Please enter a valid date.</p>
+            </div>
+        {% elif age_years is not None %}
+            <h2>Calculated Age:</h2>
+            <p>{{ age_years }} years, {{ age_months }} months, {{ age_days }} days</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

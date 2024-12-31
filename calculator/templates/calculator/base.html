@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Calculator</title>
+    <style>
+        nav {
+            background-color: blue;
+            padding: 1em;
+        }
+        nav a {
+            color: white;
+            margin-right: 1em;
+            text-decoration: none;
+        }
+    </style>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% comment %} style="background-image: url('{% static 'D:\College\testing\calculator\static\css\image.avif' %}'); " {% endcomment %}
+    <header>
+        <div class="header-container">
+            <a href="{% url 'calculator:add_dob' %}">Add DOB</a>
+            <a href="{% url 'calculator:test_cases' %}">Test Cases</a>
+            <a href="{% url 'calculator:about_us' %}">About Us</a>
+        </div>
+    </header>
+    <div class="main-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
